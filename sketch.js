@@ -1,5 +1,7 @@
 var gameState = 0;
-
+var timer = 10;
+var timer1 = 3;
+var score = 0;
 function preload(){
   FriendsImage = loadImage("Friends.png")
   AngryImage = loadImage("Angry.png")
@@ -111,5 +113,35 @@ if (gameState ===3){
   textSize(40)
   fill("black")
   text("Punch more and score more!", windowWidth/2 - 300, 150)
+  text (timer1, windowWidth-100, 100)
+  if (frameCount%30 === 0 && timer1>0){
+    timer1--
+    }
+  if (timer1 === 0){
+    gameState = 4
+  }
+
+}
+if (gameState === 4){
+  textSize(40)
+  fill("black")
+  text (timer, windowWidth-100, 100)
+  if (frameCount%30 === 0 && timer>0){
+    timer--
+    }
+  
+    if (timer===0){
+      textSize(80)
+      textFont("Bold")
+    text ("GAME OVER", windowWidth/2-200, 500)
+   text (Math.round(score/3), windowWidth/2, windowHeight/2+300)
+   
+    }
+  if (timer>0){
+  if (mousePressedOver (Punching)){
+  score = score+1
+  console.log(score)
+  }
+  }
 }
 }
