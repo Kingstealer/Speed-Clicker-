@@ -10,6 +10,10 @@ function preload(){
   Next2Image = loadImage("Next2.png")
   Next3Image = loadImage("Next3.png")
   PunchingImage = loadImage("Punching.png")
+  CheetahImage = loadImage("Cheetah.png")
+  GiraffeImage = loadImage("Giraffe.png")
+  TurtleImage = loadImage ("Turtle.png")
+  SuperHumanImage = loadImage ("SuperHuman.png")
 }
 
 function setup() {
@@ -31,6 +35,18 @@ function setup() {
   Punching = createSprite(windowWidth/2, windowHeight/2)
   Punching.scale = 0.35
     Punching.addImage(PunchingImage)
+Cheetah = createSprite(150, 150)
+Cheetah.addImage(CheetahImage)
+Cheetah.scale = 0.5
+Giraffe = createSprite(150, 150)
+Giraffe.addImage(GiraffeImage)
+Giraffe.scale = 0.5
+Turtle = createSprite(150, 150)
+Turtle.addImage(TurtleImage)
+Turtle.scale = 0.5
+SuperHuman = createSprite(150, 150)
+SuperHuman.addImage(SuperHumanImage)
+SuperHuman.scale = 0.7
 }
 
 function draw() {
@@ -45,6 +61,10 @@ function draw() {
   Next2.visible = false
   Next3.visible = false
   Punching.visible = false
+  Cheetah.visible = false
+  Turtle.visible = false
+  Giraffe.visible = false
+  SuperHuman.visible = false
 
 textSize(50)
 fill("black")
@@ -71,6 +91,10 @@ if (mousePressedOver(Next1)){
     Next2.visible = true
     Next3.visible = false
     Punching.visible = false
+    Cheetah.visible = false
+  Turtle.visible = false
+  Giraffe.visible = false
+  SuperHuman.visible = false
 
 textSize(50)
 fill("black")
@@ -94,6 +118,10 @@ console.log("gameState = 2 is working")
   Next2.visible = false
   Next3.visible = true
   Punching.visible = false
+  Cheetah.visible = false
+  Turtle.visible = false
+  Giraffe.visible = false
+  SuperHuman.visible = false
   textSize(50)
   fill("black")
   text("HAHAHHA, YOU'LL NEVER GET ME", windowWidth/2-370, 150)
@@ -110,6 +138,10 @@ if (gameState ===3){
   Next2.visible = false
   Next3.visible = false
   Punching.visible = true
+  Cheetah.visible = false
+  Turtle.visible = false
+  Giraffe.visible = false
+  SuperHuman.visible = false
   textSize(40)
   fill("black")
   text("Punch more and score more!", windowWidth/2 - 300, 150)
@@ -136,6 +168,7 @@ if (gameState === 4){
     text ("GAME OVER", windowWidth/2-200, 500)
    text (Math.round(score/3), windowWidth/2, windowHeight/2+300)
    
+   gameState = 5
     }
   if (timer>0){
   if (mousePressedOver (Punching)){
@@ -143,5 +176,54 @@ if (gameState === 4){
   console.log(score)
   }
   }
+}
+if (gameState === 5){
+  Friends.visible = false
+  Next1.visible = false
+  Angry.visible = false
+  Zombie.visible = false
+  Next2.visible = false
+  Next3.visible = false
+  Punching.visible = false
+  Cheetah.visible = false
+  Turtle.visible = false
+  Giraffe.visible = false
+  SuperHuman.visible = false
+
+  //text (Math.round(score/3), windowWidth/2, windowHeight/2+300)
+  textSize(40)
+  textFont("Bold")
+  fill("black")
+  finalScore = Math.round(score/3)
+  text (finalScore, windowWidth/2, windowHeight/2+300)
+  text ("0-20 = You are a Turtle, don't feel bad about yourself and click more", windowWidth/2-700, windowHeight/2)
+  text ("21-40, Ah! It's average just like a Giraffe, Kind of expected a little more from you.Get up and click more", windowWidth/2-700, windowHeight/2+50)
+  text ("41-60, Woah! You're so fast! Just like a Cheetah", windowWidth/2-700, windowHeight/2+100)
+  text("60-100, AHH, YOU'RE AS FAST AS A SUPERHUMAN, YOURE SO FAST, WE COULD BARELY KEEP UP", windowWidth/2-700, windowHeight/2+150)
+
+  fill("Blue")
+  if (finalScore>0 && finalScore<21){
+    text ("You are a Turtle, don't feel bad about yourself and click more", windowWidth/2-200, windowHeight/2+250)
+    Turtle.visible = true
+  }
+  
+  if (finalScore>20 && finalScore<41){
+ text ("Ah! It's average just like a Giraffe, Kind of expected a little more from you.Get up and click more", windowWidth/2-200, windowHeight/2+250)
+ Giraffe.visible = true
+  }
+
+  if (finalScore>40 && finalScore<61){
+    text ("Woah! You're so fast! Just like a Cheetah", windowWidth/2-200, windowHeight/2+250)
+    Cheetah.visible = true
+  }
+
+  if (finalScore>60){
+    text("AHH, YOU'RE AS FAST AS A SUPERHUMAN, YOURE SO FAST, WE COULD BARELY KEEP UP", windowWidth/2-200, windowHeight/2+250)
+    SuperHuman.visible = true 
+  }
+  textSize(50)
+  textFont("Bold")
+  fill("green")
+  text ("Thank you for playing! You have saved the boy and killed the ZOMBIE", 400, 200)
 }
 }
