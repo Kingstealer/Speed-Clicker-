@@ -73,9 +73,10 @@ textSize(30)
 fill ("black")
 text ("Click on next", windowWidth/2-170, 700)
 
-if (mousePressedOver(Next1)){
+if (touches.length>0||mousePressedOver(Next1)){
   gameState = 1
   console.log("gameState = 1")
+  touches = []
  
 }
   }
@@ -100,10 +101,10 @@ textSize(50)
 fill("black")
 text("HEY! STOP THAT, LEAVE HIM ALONE!", windowWidth/2-370, 150)
 
-if(mousePressedOver(Next2) ){
+if(touches.length>0||mousePressedOver(Next2) ){
   gameState = 2
   console.log("gameState = 2")
-
+touches = []
   
 
 }
@@ -126,8 +127,9 @@ console.log("gameState = 2 is working")
   fill("black")
   text("HAHAHHA, YOU'LL NEVER GET ME", windowWidth/2-370, 150)
 
-  if (mousePressedOver(Next3)){
+  if (touches.length>0||mousePressedOver(Next3)){
     gameState = 3
+    touches = []
   }
 }
 if (gameState ===3){
@@ -171,9 +173,10 @@ if (gameState === 4){
    gameState = 5
     }
   if (timer>0){
-  if (mousePressedOver (Punching)){
+  if (touches.length>0||mousePressedOver (Punching)){
   score = score+1
   console.log(score)
+  touches = []
   }
   }
 }
